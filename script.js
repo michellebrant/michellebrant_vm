@@ -26,16 +26,29 @@ displayUserOneInfo = function(userOne) {
   containerOne = $('.containerOne');
   for (i=0;i<userOne.length;i++){
 
-      column = $('<div class="column"></div>');
+      row = $('<div class="row"></div>');
 
+      userOneAlbumDiv = $('<div class="column"></div>');
       userOneAlbumId=$('<p class="text"></p>');
-      userOneAlbumId.text('Album ID: ' + userOne[i].id);
-      column.append(userOneAlbumId);
-      $('.containerOne').append(column);
+      userOneAlbumId.text(userOne[i].id);
+      userOneAlbumDiv.append(userOneAlbumId);
+      row.append(userOneAlbumDiv);
 
+      userOneAlbumDiv = $('<div class="column"></div>');
       userOneAlbums=$('<p class="text"></p>');
       userOneAlbums.text(userOne[i].title);
-      column.append(userOneAlbums);
+      userOneAlbumDiv.append(userOneAlbums);
+      row.append(userOneAlbumDiv);
+
+      $('.containerOne').append(row);
+
+      if (userOne[i].id % 2 === 0){
+        row.addClass('even');
+      }
+
+      else{
+        row.addClass('odd');
+      }
   }
 }
 
@@ -43,13 +56,30 @@ displayUserTwoInfo = function(userTwo) {
   $('.user2').text('User ID: ' + userTwo[0].userId);
   containerTwo = $('.containerTwo');
   for (i=0;i<userTwo.length;i++){
-    userTwoAlbums=$('<p class="text"></p>');
-    userTwoAlbums.text(userTwo[i].title);
-    containerTwo.append(userTwoAlbums);
 
-    userTwoAlbumId=$('<p class="text"></p>');
-    userTwoAlbumId.text('Album ID: ' + userTwo[i].id);
-    containerTwo.append(userTwoAlbumId);
+      row = $('<div class="row"></div>');
+
+      userTwoAlbumDiv = $('<div class="column"></div>');
+      userTwoAlbumId=$('<p class="text"></p>');
+      userTwoAlbumId.text(userTwo[i].id);
+      userTwoAlbumDiv.append(userTwoAlbumId);
+      row.append(userTwoAlbumDiv);
+
+      userTwoAlbumDiv = $('<div class="column"></div>');
+      userTwoAlbums=$('<p class="text"></p>');
+      userTwoAlbums.text(userTwo[i].title);
+      userTwoAlbumDiv.append(userTwoAlbums);
+      row.append(userTwoAlbumDiv);
+
+      $('.containerTwo').append(row);
+
+      if (userTwo[i].id % 2 === 0){
+        row.addClass('even');
+      }
+
+      else{
+        row.addClass('odd');
+      }
 
   }
 }
