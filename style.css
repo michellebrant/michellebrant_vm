@@ -1,0 +1,28 @@
+body{
+  background-color: yellow;
+}
+
+.bodyContainer{
+  display: flex;
+}
+
+.containerOne{
+  order: 1;
+  border: 1px solid black;
+  width: 40%;
+}
+
+.spacer{
+  order: 2;
+  width: 20%;
+}
+
+.containerTwo{
+  order: 3;
+  border: 1px solid black;
+  width: 40%;
+}
+
+.column{
+  display: flex;
+}
