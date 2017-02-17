@@ -26,7 +26,7 @@
     containerOne = $('.containerOne');
     for (i=0;i<userOne.length;i++){
 
-        row = $('<div class="row" id="' + Date.now() + '" draggable="true" ondragstart="drag(event)"></div>');
+        row = $('<div class="row" id="' + Date.now()+Math.floor(Math.random() * 10000) + '" draggable="true" ondragstart="drag(event)"></div>');
 
         userOneAlbumDiv = $('<div class="column"></div>');
         userOneAlbumId=$('<p class="text"></p>');
@@ -50,6 +50,8 @@
           row.addClass('odd');
         }
     }
+      newDiv = $('<div id="new" ondrop="drop(event)" ondragover="allowDrop(event)"></div>');
+      $('.containerOne').append(newDiv);
   }
 
   displayUserTwoInfo = function(userTwo) {
@@ -57,7 +59,7 @@
     containerTwo = $('.containerTwo');
     for (i=0;i<userTwo.length;i++){
 
-        row = $('<div class="row" id=' + Date.now() + ' draggable="true"></div>');
+        row = $('<div class="row" id="' + Date.now()+Math.floor(Math.random() * 10000) + '" draggable="true" ondragstart="drag(event)"></div>');
 
         userTwoAlbumDiv = $('<div class="column"></div>');
         userTwoAlbumId=$('<p class="text"></p>');
@@ -104,35 +106,4 @@ function drop(ev) {
     ev.target.append(document.getElementById(data));
 }
 
-
-//   var dragging = null;
-
-//   dragIt = function(){
-//     console.log('dragit')
-//     dragger=$('.row');
-//     dragger.position()='absolute';
-//     $(document).on('mousedown', dragger, function(){
-//       dragging = dragger
-//     })
-//     // dragger.onmousedown = function(){
-//     //   dragging = dragger
-//     // }
-//   };
-
-//   document.onmouseup = function(e){
-//     dragging = null;
-//   }
-
-//   document.onmousemove = function(e){
-//     var x = e.pageX;
-//     var y = e.pageY;
-
-//     if(dragging === null)
-//       return;
-
-//     dragging.left = x + 'px';
-//     dragging.top = y + 'px'
-//   }
-
-//   dragIt();
 
