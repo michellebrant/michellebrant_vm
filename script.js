@@ -1,6 +1,6 @@
   getUserOneInfo = function() {
     $.ajax({
-      url: 'https://jsonplaceholder.typicode.com/albums',
+      url: 'http://jsonplaceholder.typicode.com/albums',
       method: 'GET'
     })
     .done(function(data) {
@@ -109,8 +109,9 @@ function drop(ev) {
 
       // console.log('changing to user 1')
       $.ajax({
-        url: 'https://jsonplaceholder.typicode.com/albums/' + data,
+        url: 'http://jsonplaceholder.typicode.com/albums/' + data,
         method:'PATCH',
+        dataType: 'jsonp',
         data: {userId: 1}
       })
       .then(function(d){
@@ -124,8 +125,9 @@ function drop(ev) {
       // $('.containerTwo').append(newDiv);
       // console.log('changing to user 2')
       $.ajax({
-        url: 'https://jsonplaceholder.typicode.com/albums/' + data,
+        url: 'http://jsonplaceholder.typicode.com/albums/' + data,
         method:'PATCH',
+        dataType: 'jsonp',
         data: {userId: 2}
       })
       .then(function(d){
@@ -156,26 +158,47 @@ appendDragOne = function(d) {
         newDiv = $('<div id="new1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>');
         $('.containerOne').append(newDiv);
 
+        me =  $('#' + d.id)
+        above = $('#' + d.id).prev('div');
+
+        if (above.hasClass('even') === true){
+          $('#' + d.id).addClass('odd')
+        }
+
+        else {
+          $('#' + d.id).addClass('even')
+        }
+
 }
 
 appendDragTwo = function(d) {
         $('#new2').remove();
         row = $('<div class="row" id="' + d.id +  '" draggable="true" ondragstart="drag(event)"></div>');
 
-        userOneAlbumDiv = $('<div class="column"></div>');
-        userOneAlbumId=$('<p class="text"></p>');
-        userOneAlbumId.text(d.id);
-        userOneAlbumDiv.append(userOneAlbumId);
-        row.append(userOneAlbumDiv);
+        userTwoAlbumDiv = $('<div class="column"></div>');
+        userTwoAlbumId=$('<p class="text"></p>');
+        userTwoAlbumId.text(d.id);
+        userTwoAlbumDiv.append(userTwoAlbumId);
+        row.append(userTwoAlbumDiv);
 
-        userOneAlbumDiv = $('<div class="column"></div>');
-        userOneAlbums=$('<p class="text"></p>');
-        userOneAlbums.text(d.title);
-        userOneAlbumDiv.append(userOneAlbums);
-        row.append(userOneAlbumDiv);
+        userTwoAlbumDiv = $('<div class="column"></div>');
+        userTwoAlbums=$('<p class="text"></p>');
+        userTwoAlbums.text(d.title);
+        userTwoAlbumDiv.append(userTwoAlbums);
+        row.append(userTwoAlbumDiv);
 
         $('.containerTwo').append(row);
-        newDiv = $('<div id="new1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>');
+        newDiv = $('<div id="new2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>');
         $('.containerTwo').append(newDiv);
 
+        me =  $('#' + d.id)
+        above = $('#' + d.id).prev('div');
+
+        if (above.hasClass('even') === true){
+          $('#' + d.id).addClass('odd')
+        }
+
+        else {
+          $('#' + d.id).addClass('even')
+        }
 }
