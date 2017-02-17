@@ -38,7 +38,6 @@ body{
   width: 50%;
   height: 100px;
 }
-
 .even{
   background-color: pink;
 }
@@ -47,8 +46,10 @@ body{
   background-color: red;
 }
 
-#new{
-  height: 400px;
-/*   border: 10px black solid; */
+#new1 {
+  height: 100px;
 }
 
+#new2 {
+  height: 100px;
+}
