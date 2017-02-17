@@ -33,14 +33,14 @@ body{
   text-align: center;
 }
 
-.column{
+.column {
   border: 1px solid black;
   width: 50%;
   height: 100px;
+  text-align: center;
 }
-.even{
 
-}
+
 
 .odd{
   background-color: lightblue;
