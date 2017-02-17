@@ -97,17 +97,46 @@ function allowDrop(ev) {
 function drag(ev) {
    ev.dataTransfer.setData('text', ev.target.id)
    old = ev.target
+   next =  $('#' + event.target.id).nextAll('div')
 }
 
 function drop(ev) {
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
-    console.log(ev.target)
-    // ev.target.append(document.getElementById(data));
+    console.log(next.eq(0))
+    if (next.eq(0).hasClass('odd') === true){
+      for(i=0;i<next.length-1;i++){
+        if (next.eq(i).hasClass('odd') === true){
+          next.eq(i).removeClass('odd');
+          next.eq(i).addClass('even');
+        }
+        else{
+          next.eq(i).removeClass('even');
+          next.eq(i).addClass('odd');
+        }
+      }
+
+    }
+
+   else {
+      for(i=0;i<next.length-1;i++){
+        if (next.eq(i).hasClass('odd') === true){
+          next.eq(i).removeClass('odd');
+          next.eq(i).addClass('even');
+        }
+        else{
+          next.eq(i).removeClass('even');
+          next.eq(i).addClass('odd');
+        }
+      }
+
+   }
+
     if (ev.target.id==='new1'){
       old.remove()
 
-      // console.log('changing to user 1')
+
+
       $.ajax({
         url: 'http://jsonplaceholder.typicode.com/albums/' + data,
         method:'PATCH',
@@ -115,15 +144,11 @@ function drop(ev) {
         data: {userId: 1}
       })
       .then(function(d){
-        console.log(d.title)
         appendDragOne(d)
       })
     }
     else {
       old.remove()
-      // newDiv = $('<div id="new2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>');
-      // $('.containerTwo').append(newDiv);
-      // console.log('changing to user 2')
       $.ajax({
         url: 'http://jsonplaceholder.typicode.com/albums/' + data,
         method:'PATCH',
@@ -131,7 +156,6 @@ function drop(ev) {
         data: {userId: 2}
       })
       .then(function(d){
-        console.log(d.title)
         appendDragTwo(d)
       })
     }

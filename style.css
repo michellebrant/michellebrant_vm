@@ -39,11 +39,11 @@ body{
   height: 100px;
 }
 .even{
-  background-color: pink;
+
 }
 
 .odd{
-  background-color: red;
+  background-color: lightblue;
 }
 
 #new1 {
