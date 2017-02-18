@@ -23,7 +23,12 @@ displayUserOneInfo = function(a) {
         userOneAlbumDiv2 = $('<div class="column"></div>').append($('<p>'+a[i].title+'</p>'))
         row.append(userOneAlbumDiv2);
         $(".containerOne").append(row);
-        if (a[i].id % 2 === 0) row.addClass("even"); else row.addClass("odd");
+        if (a[i].id % 2 === 0) {
+          row.addClass("even");
+          }
+        else {
+          row.addClass("odd");
+        }
     }
     newDiv = $('<div id="new1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>');
     $(".containerOne").append(newDiv);
@@ -39,7 +44,12 @@ displayUserTwoInfo = function(a) {
         userTwoAlbumDiv2 = $('<div class="column"></div>').append($('<p>'+a[i].title+'</p>'))
         row.append(userTwoAlbumDiv2);
         $(".containerTwo").append(row);
-        if (a[i].id % 2 === 0) row.addClass("even"); else row.addClass("odd");
+        if (a[i].id % 2 === 0) {
+          row.addClass("even");
+        }
+        else {
+          row.addClass("odd");
+        }
     }
     newDiv = $('<div id="new2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>');
     $(".containerTwo").append(newDiv);
@@ -58,18 +68,14 @@ function drag(a) {
 function drop(a) {
     a.preventDefault();
     var b = a.dataTransfer.getData("text");
-    if (true === next.eq(0).hasClass("odd")) for (i = 0; i < next.length - 1; i++) if (true === next.eq(i).hasClass("odd")) {
+    for (i = 0; i < next.length - 1; i++) {
+      if (true === next.eq(i).hasClass("odd")) {
         next.eq(i).removeClass("odd");
         next.eq(i).addClass("even");
     } else {
         next.eq(i).removeClass("even");
         next.eq(i).addClass("odd");
-    } else for (i = 0; i < next.length - 1; i++) if (true === next.eq(i).hasClass("odd")) {
-        next.eq(i).removeClass("odd");
-        next.eq(i).addClass("even");
-    } else {
-        next.eq(i).removeClass("even");
-        next.eq(i).addClass("odd");
+    }
     }
     if ("new1" === a.target.id) {
         old.remove();
@@ -125,5 +131,9 @@ appendDragTwo = function(a) {
     $(".containerTwo").append(newDiv);
     me = $("#" + a.id);
     above = $("#" + a.id).prev("div");
-    if (true === above.hasClass("even")) $("#" + a.id).addClass("odd"); else $("#" + a.id).addClass("even");
+    if (true === above.hasClass("even")) {
+      $("#" + a.id).addClass("odd");
+    } else {
+      $("#" + a.id).addClass("even");
+    }
 };
